@@ -68,4 +68,10 @@ Open `http://<your-ip>:8080` in your browser to access Adminer and view the data
 
 This wasn't just a follow-along tutorial. I wrote the Dockerfile and docker-compose from scratch, hit real errors, and debugged them myself — including a postgres:18 volume path change that required reading the official GitHub issue to understand.
 
+## Screenshots
 
+<img width="1095" height="693" alt="Image" src="https://github.com/user-attachments/assets/367cd48f-a0c9-4b29-9b5a-8529b0910480" />
+
+<img width="1359" height="726" alt="Image" src="https://github.com/user-attachments/assets/639c39f5-305f-4cf2-8c33-8d0033b987cd" />
+
+<img width="1361" height="742" alt="Image" src="https://github.com/user-attachments/assets/66bae318-b38c-4a4e-8ea1-3445ae2e4eb7" />
