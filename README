@@ -1,0 +1,71 @@
+# Goal Tracker — Dockerized Multi-Container App
+
+A simple goal tracking application containerized with Docker. Built as part of my self-taught DevOps learning journey.
+
+## What This Project Does
+
+Users can add personal goals with deadlines and view how many days remain for each goal. Data persists across container restarts.
+
+## Tech Stack
+
+| Component | Technology |
+|-----------|------------|
+| App | Python 3.12 |
+| Database | PostgreSQL 18 |
+| DB UI | Adminer |
+| Orchestration | Docker Compose |
+| Environment | Ubuntu Linux VM |
+
+## Architecture
+
+```
+┌─────────────┐     ┌──────────────┐     ┌─────────────┐
+│   app       │────▶│     db       │◀────│   adminer   │
+│ (Python)    │     │ (PostgreSQL) │     │  port 8080  │
+└─────────────┘     └──────┬───────┘     └─────────────┘
+                           │
+                    ┌──────▼───────┐
+                    │ Docker Volume│
+                    │ (persistent) │
+                    └──────────────┘
+```
+
+## How to Run
+
+**Prerequisites:** Docker and Docker Compose installed on a Linux machine.
+
+```bash
+# Clone the repo
+git clone https://github.com/ajogiyat711-gif/goal-tracker
+cd goal-tracker
+
+# Start all containers
+docker compose up --build
+
+# In a second terminal — interact with the app
+docker compose run app
+```
+
+Open `http://<your-ip>:8080` in your browser to access Adminer and view the database.
+
+**Adminer login:**
+- System: PostgreSQL
+- Server: db
+- Username: user
+- Password: password
+- Database: my_database
+
+## Key Concepts Demonstrated
+
+- Custom Dockerfile with multi-stage dependency installation
+- Multi-container orchestration with docker-compose
+- Container networking — app reaches db using service name as hostname
+- Persistent storage with named Docker volumes
+- Environment variable based configuration — no hardcoded credentials in code
+- Separation of concerns — app, database, and UI as independent services
+
+## What I Learned Building This
+
+This wasn't just a follow-along tutorial. I wrote the Dockerfile and docker-compose from scratch, hit real errors, and debugged them myself — including a postgres:18 volume path change that required reading the official GitHub issue to understand.
+
+
